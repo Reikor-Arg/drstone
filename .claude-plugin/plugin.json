@@ -1,6 +1,6 @@
 {
   "name": "drstone",
-  "description": "Recuerda en cada mensaje que hay que responder corto. Cavernicola en la forma, no en el contenido: menos tokens de salida, misma sustancia tecnica.",
+  "description": "Reminds Claude on every message to keep answers short. Caveman in form, not in content: fewer output tokens, same technical substance.",
   "version": "0.1.0",
   "author": {
     "name": "Reikor-Arg"

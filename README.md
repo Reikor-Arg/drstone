@@ -1,27 +1,27 @@
 # Dr. Stone
 
-Plugin de [Claude Code](https://claude.com/product/claude-code) que le recuerda a Claude, **en cada mensaje**, que responda corto.
+A [Claude Code](https://claude.com/product/claude-code) plugin that reminds Claude, **on every message**, to keep answers short.
 
-Cavernícola en la forma, no en el contenido: menos palabras, misma sustancia técnica. El código, los nombres de API y los errores van literales.
+Caveman in form, not in content: fewer words, same technical substance. Code, API names and errors stay verbatim.
 
-## Por qué existe
+## Why it exists
 
-La instrucción "sé breve" en `CLAUDE.md` funciona los primeros mensajes y después se diluye: queda arriba de todo el contexto, lejos de lo que Claude está por responder. A las dos horas te está contestando quince líneas para decirte "listo".
+A "be brief" instruction in `CLAUDE.md` works for the first few messages and then fades: it sits at the top of the context, far from what Claude is about to write. Two hours in, you get fifteen lines to say "done".
 
-Este plugin la vuelve a poner **pegada a tu mensaje**, con un hook `UserPromptSubmit`, cada vez.
+This plugin puts the rule back **right next to your message**, through a `UserPromptSubmit` hook, every time.
 
-## Cuentas
+## The math
 
 | | tokens |
 |---|---|
-| recordatorio inyectado | ~25 por mensaje |
-| lo que se ahorra de salida | 200-400 por respuesta |
+| reminder injected | ~22 per message |
+| output saved | 200-400 per answer |
 
-Y los tokens de salida cuestan alrededor de 5× los de entrada. La cuenta cierra a favor desde el primer mensaje.
+Output tokens cost roughly 5× input tokens, so it pays for itself from the first message.
 
-## Instalación
+## Install
 
-Un comando. Sirve para **terminal**, **app de escritorio** y **Claude dentro de VS Code**: los hooks no dependen de la interfaz.
+One command. Works in the **terminal**, the **desktop app** and **Claude inside VS Code** — hooks don't depend on the interface.
 
 **Windows** (PowerShell):
 
@@ -35,16 +35,16 @@ irm https://raw.githubusercontent.com/Reikor-Arg/drstone/master/install.ps1 | ie
 curl -fsSL https://raw.githubusercontent.com/Reikor-Arg/drstone/master/install.sh | sh
 ```
 
-Después **cerrá y abrí Claude Code** — la aplicación entera, no solo la sesión: `settings.json` se lee al arrancar el proceso. Si al volver ves `DRSTONE ON:` antes de la primera respuesta, está andando.
+Then **quit and reopen Claude Code** — the whole app, not just the session: `settings.json` is read when the process starts. If you see `DRSTONE:` above the first answer, it works.
 
-El instalador hace una copia de seguridad con fecha antes de tocar nada y conserva los hooks, permisos y plugins que ya tuvieras. Para desinstalar: borrá el bloque `UserPromptSubmit` de `~/.claude/settings.json`, o restaurá el `.bak`.
+The installer writes a timestamped backup before touching anything and keeps whatever hooks, permissions and plugins you already had. To uninstall: remove the `UserPromptSubmit` block from `~/.claude/settings.json`, or restore the `.bak`.
 
 <details>
-<summary>Instalación a mano, si preferís no correr un script</summary>
+<summary>Manual install, if you'd rather not run a script</summary>
 
-### A) Pegando el hook (sirve en todas, no necesita nada)
+### A) Paste the hook (works everywhere, needs nothing)
 
-Abrí `~/.claude/settings.json` (en Windows: `C:\Users\TU_USUARIO\.claude\settings.json`) y agregá el bloque `hooks`. Si ya tenés uno, sumá la clave `UserPromptSubmit` adentro:
+Open `~/.claude/settings.json` (Windows: `C:\Users\YOUR_USER\.claude\settings.json`) and add the `hooks` block. If you already have one, add the `UserPromptSubmit` key inside it:
 
 ```json
 {
@@ -54,7 +54,7 @@ Abrí `~/.claude/settings.json` (en Windows: `C:\Users\TU_USUARIO\.claude\settin
         "hooks": [
           {
             "type": "command",
-            "command": "echo DRSTONE: respuestas cortas. NUNCA: relleno, cortesia, narrar tools, no pedidos. Codigo y errores literales.",
+            "command": "echo DRSTONE: keep answers short. NEVER: filler, pleasantries, narrating tool calls, unrequested extras. Code and errors verbatim.",
             "timeout": 5
           }
         ]
@@ -64,20 +64,20 @@ Abrí `~/.claude/settings.json` (en Windows: `C:\Users\TU_USUARIO\.claude\settin
 }
 ```
 
-Guardá y reiniciá la sesión de Claude. Listo — no hace falta clonar este repo.
+Save and restart Claude Code. No need to clone this repo.
 
-### B) Como plugin, desde el CLI de terminal
+### B) As a plugin, from the terminal CLI
 
 ```
 /plugin marketplace add Reikor-Arg/drstone
 /plugin install drstone
 ```
 
-**Ojo:** `/plugin` hoy solo existe en el CLI de terminal. En la app de escritorio y en la extensión de VS Code contesta `/plugin isn't available in this environment`. Ahí va la opción A, o la C.
+**Heads up:** `/plugin` currently exists only in the terminal CLI. In the desktop app and the VS Code extension it answers `/plugin isn't available in this environment`. Use option A or C there.
 
-### C) Como plugin, editando el settings a mano
+### C) As a plugin, editing settings by hand
 
-Equivale a lo que hace `/plugin install` por dentro. En `~/.claude/settings.json`:
+Same thing `/plugin install` does under the hood. In `~/.claude/settings.json`:
 
 ```json
 {
@@ -92,22 +92,32 @@ Equivale a lo que hace `/plugin install` por dentro. En `~/.claude/settings.json
 
 </details>
 
-No hay que escribir `/caveman` ni nada antes de cada mensaje — que es justo lo que hace gastar de más.
+No `/caveman` before every message — which is exactly what makes you spend more.
 
-## Por qué no es una extensión de VS Code
+## Why it isn't a VS Code extension
 
-Una extensión de VS Code no puede escribir en el contexto de Claude: pinta en el editor, y Claude no lee el editor. El único canal que llega a la conversación es un hook, y los hooks viven en los plugins.
+A VS Code extension can't write into Claude's context: it paints in the editor, and Claude doesn't read the editor. The only channel that reaches the conversation is a hook, and hooks live in plugins.
 
-## Qué no hace
+## The whole prompt
 
-- No usa Node ni ningún runtime: es un `echo`, milisegundos, nada queda corriendo.
-- No manda nada afuera.
-- No cambia el modelo ni la configuración.
+That one line is the entire plugin. No hidden skill, no rule file:
 
-## El nombre
+```
+DRSTONE: keep answers short. NEVER: filler, pleasantries, narrating tool calls, unrequested extras. Code and errors verbatim.
+```
 
-Por [Dr. Stone](https://es.wikipedia.org/wiki/Dr._Stone), donde la humanidad vuelve a la edad de piedra y Senku sobrevive hablando como cavernícola pero razonando como científico. La idea es esa: forma primitiva, contenido intacto.
+Claude replies in whatever language you write in — the reminder only changes the density.
 
-## Licencia
+## What it does not do
+
+- No Node, no runtime: it's an `echo`. Milliseconds, nothing stays resident.
+- Sends nothing anywhere.
+- Doesn't touch your model or the rest of your settings.
+
+## The name
+
+After [Dr. Stone](https://en.wikipedia.org/wiki/Dr._Stone), where humanity falls back to the stone age and Senku gets by talking like a caveman while reasoning like a scientist. That's the idea: primitive form, intact content.
+
+## License
 
 MIT

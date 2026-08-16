@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo DRSTONE: respuestas cortas. NUNCA: relleno, cortesia, narrar tools, no pedidos. Codigo y errores literales.",
+            "command": "echo DRSTONE: keep answers short. NEVER: filler, pleasantries, narrating tool calls, unrequested extras. Code and errors verbatim.",
             "timeout": 5
           }
         ]
