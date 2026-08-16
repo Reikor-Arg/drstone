@@ -21,7 +21,26 @@ Y los tokens de salida cuestan alrededor de 5× los de entrada. La cuenta cierra
 
 ## Instalación
 
-Funciona en las tres superficies — **terminal**, **app de escritorio** y **Claude dentro de VS Code** — porque los hooks no dependen de la interfaz. Lo que cambia es cómo se instala en cada una.
+Un comando. Sirve para **terminal**, **app de escritorio** y **Claude dentro de VS Code**: los hooks no dependen de la interfaz.
+
+**Windows** (PowerShell):
+
+```powershell
+irm https://raw.githubusercontent.com/Reikor-Arg/drstone/master/install.ps1 | iex
+```
+
+**macOS / Linux**:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Reikor-Arg/drstone/master/install.sh | sh
+```
+
+Después **cerrá y abrí Claude Code** — la aplicación entera, no solo la sesión: `settings.json` se lee al arrancar el proceso. Si al volver ves `DRSTONE ON:` antes de la primera respuesta, está andando.
+
+El instalador hace una copia de seguridad con fecha antes de tocar nada y conserva los hooks, permisos y plugins que ya tuvieras. Para desinstalar: borrá el bloque `UserPromptSubmit` de `~/.claude/settings.json`, o restaurá el `.bak`.
+
+<details>
+<summary>Instalación a mano, si preferís no correr un script</summary>
 
 ### A) Pegando el hook (sirve en todas, no necesita nada)
 
@@ -70,6 +89,8 @@ Equivale a lo que hace `/plugin install` por dentro. En `~/.claude/settings.json
   }
 }
 ```
+
+</details>
 
 No hay que escribir `/caveman` ni nada antes de cada mensaje — que es justo lo que hace gastar de más.
 
