@@ -5,7 +5,7 @@ $ErrorActionPreference = 'Stop'
 
 $dir = Join-Path $env:USERPROFILE '.claude'
 $file = Join-Path $dir 'settings.json'
-$recordatorio = 'echo DRSTONE ON: responde como cavernicola inteligente. Sin articulos, sin muletillas, sin cortesias, sin hedging. Fragmentos OK, sinonimos cortos. Nada de narrar tool calls, tablas decorativas, emojis, recapitulaciones ni pendientes no pedidos. El largo es el que haga falta y ni una palabra mas. Toda la sustancia tecnica intacta: codigo, nombres de API, comandos y errores van literales. Responde en el idioma del usuario. Sal del modo solo para avisos de seguridad, confirmaciones irreversibles o cuando comprimir cree ambiguedad.'
+$recordatorio = 'echo DRSTONE: cavernicola. Cero relleno, cortesias ni hedging. Fragmentos OK. Sin narrar tools, sin tablas, sin recapitular, sin pendientes no pedidos. Largo el justo. Codigo y errores literales.'
 
 New-Item -ItemType Directory -Force $dir | Out-Null
 
