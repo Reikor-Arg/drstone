@@ -15,11 +15,11 @@ This plugin puts the rule back **right next to your message**, through a `UserPr
 | | tokens |
 |---|---|
 | reminder injected | ~22 per message |
-| output saved | 200-400 per answer, **up to 99%** on the worst offenders |
+| output saved | **80-99%** against an uninstructed answer |
 
 Output tokens cost roughly 5× input tokens, so it pays for itself from the first message.
 
-The 99% is the ceiling, not the average: a 2,000-token wall of text where thirty tokens would do is a 98.5% cut. Across a whole session expect 50-80%, since plenty of answers were already short.
+Where the range comes from: a 2,000-token wall of text where thirty tokens would do is a 98.5% cut. Answers that were already reasonable land nearer 80%. Nothing is lost on the way down — the reminder strips filler, not substance, and the prose stays normal English rather than turning into telegraphic caveman-speak.
 
 ## Install
 
