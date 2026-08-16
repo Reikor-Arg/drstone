@@ -41,6 +41,19 @@ Then **quit and reopen Claude Code** — the whole app, not just the session: `s
 
 The installer writes a timestamped backup before touching anything and keeps whatever hooks, permissions and plugins you already had. To uninstall: remove the `UserPromptSubmit` block from `~/.claude/settings.json`, or restore the `.bak`.
 
+### Recommended: put the same line in your `CLAUDE.md`
+
+For the strongest effect, add this to `~/.claude/CLAUDE.md` as well:
+
+```markdown
+# DRSTONE — ALWAYS ON
+Keep answers short. NEVER: filler, pleasantries, narrating tool calls, unrequested extras. Code and errors verbatim.
+```
+
+The two work on different weaknesses and reinforce each other. `CLAUDE.md` is the standing rule, loaded once per session and cached, so it costs almost nothing per message — but it sits at the top of the context and fades as the conversation grows. The hook is the reminder landing right next to your message, fresh every time, but it's one line against everything else pulling the other way.
+
+Together: the rule is both established and repeated. Skip either one and compliance drops.
+
 <details>
 <summary>Manual install, if you'd rather not run a script</summary>
 
