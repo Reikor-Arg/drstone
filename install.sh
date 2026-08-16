@@ -5,7 +5,7 @@ set -e
 
 DIR="$HOME/.claude"
 FILE="$DIR/settings.json"
-REC='echo DRSTONE: cavernicola. Cero relleno, cortesias ni hedging. Fragmentos OK. Sin narrar tools, sin tablas, sin recapitular, sin pendientes no pedidos. Largo el justo. Codigo y errores literales.'
+REC='echo DRSTONE: responde 1 frase. Ampliar SOLO si piden detalle, hay riesgo o comprimir crea ambiguedad. Prohibido: relleno, cortesias, narrar tools, tablas, recapitular, pendientes no pedidos. Codigo y errores literales.'
 
 mkdir -p "$DIR"
 [ -f "$FILE" ] || echo '{}' > "$FILE"
