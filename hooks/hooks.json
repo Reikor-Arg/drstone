@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo DRSTONE ON: responde en 3 lineas o menos. Sin tablas, sin resumenes, sin recapitular lo hecho, sin listar pendientes que no te pidieron. Toda la sustancia tecnica intacta: codigo, nombres de API y errores van literales.",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

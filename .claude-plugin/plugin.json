@@ -1,0 +1,11 @@
+{
+  "name": "drstone",
+  "description": "Recuerda en cada mensaje que hay que responder corto. Cavernicola en la forma, no en el contenido: menos tokens de salida, misma sustancia tecnica.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Reikor-Arg"
+  },
+  "homepage": "https://github.com/Reikor-Arg/drstone",
+  "keywords": ["caveman", "tokens", "brevity", "cost"],
+  "hooks": "./hooks/hooks.json"
+}
