@@ -54,7 +54,7 @@ Abrí `~/.claude/settings.json` (en Windows: `C:\Users\TU_USUARIO\.claude\settin
         "hooks": [
           {
             "type": "command",
-            "command": "echo DRSTONE: responde 1 frase. Ampliar SOLO si piden detalle, hay riesgo o comprimir crea ambiguedad. Prohibido: relleno, cortesias, narrar tools, tablas, recapitular, pendientes no pedidos. Codigo y errores literales.",
+            "command": "echo DRSTONE: respuestas cortas. NUNCA: relleno, cortesia, narrar tools, no pedidos. Codigo y errores literales.",
             "timeout": 5
           }
         ]

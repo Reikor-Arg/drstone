@@ -5,7 +5,7 @@ $ErrorActionPreference = 'Stop'
 
 $dir = Join-Path $env:USERPROFILE '.claude'
 $file = Join-Path $dir 'settings.json'
-$recordatorio = 'echo DRSTONE: responde 1 frase. Ampliar SOLO si piden detalle, hay riesgo o comprimir crea ambiguedad. Prohibido: relleno, cortesias, narrar tools, tablas, recapitular, pendientes no pedidos. Codigo y errores literales.'
+$recordatorio = 'echo DRSTONE: respuestas cortas. NUNCA: relleno, cortesia, narrar tools, no pedidos. Codigo y errores literales.'
 
 New-Item -ItemType Directory -Force $dir | Out-Null
 
